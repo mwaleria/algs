@@ -17,5 +17,16 @@ public interface Heap<T extends Comparable<T>> {
      * @return
      */
     T peek();
+
+    /**
+     *
+     * @return size of the heap
+     */
     int size();
+
+    /**
+     *
+     * @return true heap is empty;
+     */
+    boolean isEmpty();
 }
