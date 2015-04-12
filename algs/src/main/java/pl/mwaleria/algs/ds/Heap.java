@@ -7,13 +7,13 @@ public interface Heap<T extends Comparable<T>> {
 
     void insert(T element);
     /**
-     * get and remove min value
+     * get and remove max value
      * @return
      */
     T pool();
 
     /**
-     * get min value
+     * get max value
      * @return
      */
     T peek();

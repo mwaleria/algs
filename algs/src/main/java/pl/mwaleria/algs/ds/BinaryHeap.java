@@ -1,6 +1,7 @@
 package pl.mwaleria.algs.ds;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by Marcin on 11.04.2015.
@@ -26,21 +27,14 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
     }
 
     public void insert(T element) {
-        int i = size;
         size = size +1;
         adjustCapacity();
-        int j = ( i-1 ) % 2 ;
-
-        while(i > 0 && element.compareTo((T)values[j]) > 0) {
-            values[i] = values[j];
-            i=j;
-             j = (i-1) % 2;
-        }
-        values[i] = element;
+        values[size] = element;
+        upheap(size);
     }
 
     private void adjustCapacity() {
-        if(size > capacity ) {
+        if(size+1 > capacity ) {
             capacity = capacity * 2;
             values = Arrays.copyOf(values,capacity);
         }
@@ -49,35 +43,21 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
 
     @Override
     public T pool() {
-        if(size ==0 ) {
+        if(size==0) {
             return null;
         }
+        T min =(T) values[1];
+        values[1] = values[size];
+        size --;
+        downheap(1);
 
-        T minElement = (T) values[0];
-        size -- ;
-        Comparable<T> v = values[size];
-        int i = 0;
-        int j = 1;
-        while ( j < size) {
-            if( j+1 < size && values[j+1].compareTo((T)values[j]) > 0) {
-                j = j+1;
-            }
-            if(v.compareTo((T) values[j]) >= 0) {
-                break;
-            }
-            values[i] = values[j];
-            i = j;
-            j = 2*j +1;
-        }
-        values[i] = v;
-
-        return minElement;
+        return min;
     }
 
     @Override
     public T peek() {
         if(size > 0)
-            return (T) values[0];
+            return (T) values[1];
 
         return null;
     }
@@ -90,5 +70,34 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
     @Override
     public boolean isEmpty() {
         return size == 0 ;
+    }
+
+    protected void downheap(int elementIndex) {
+        int j = 2*elementIndex;
+        while(j <= size) {
+            if(j < size && values[j].compareTo((T)values[j+1]) < 0) {
+                j++;
+            }
+            if(values[elementIndex].compareTo((T)values[j]) >= 0) {
+                break;
+            }
+
+            exchange(elementIndex,j);
+            elementIndex = j;
+            j = 2*elementIndex;
+        }
+    }
+
+    protected void upheap(int elementIndex){
+        while(elementIndex > 1 && values[elementIndex/2].compareTo((T)values[elementIndex]) < 0) {
+            exchange(elementIndex,elementIndex/2);
+            elementIndex = elementIndex / 2 ;
+        }
+    }
+
+    protected void exchange(final int i, final int j) {
+        Comparable<T> tmp  =values[j];
+        values[j] = values[i];
+        values[i] = tmp;
     }
 }

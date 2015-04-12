@@ -23,25 +23,26 @@ public class BinaryHeapTest {
             heap.insert(i);
         }
         assertEquals(100,heap.size());
-        assertEquals(new Integer(0),heap.peek());
+        assertEquals(new Integer(99),heap.peek());
     }
 
     @Test
     public void testPeek() {
         heap.insert(2);
         heap.insert(10);
-        assertEquals(new Integer(2), heap.peek());
-        assertEquals(new Integer(2),heap.peek());
+        assertEquals(new Integer(10), heap.peek());
+        assertEquals(new Integer(10),heap.peek());
     }
 
     @Test
     public void testPeek2() {
-        heap.insert(10);
-       // assertEquals(new Integer(10), heap.peek());
         heap.insert(7);
-       // assertEquals(new Integer(7), heap.peek());
+        assertEquals(new Integer(7), heap.peek());
         heap.insert(1);
-      //  assertEquals(new Integer(1), heap.peek());
+        assertEquals(new Integer(7), heap.peek());
+        heap.insert(10);
+        assertEquals(new Integer(10), heap.peek());
+
     }
 
 
@@ -53,11 +54,11 @@ public class BinaryHeapTest {
         heap.insert(8);
         heap.insert(6);
 
-        assertEquals(new Integer(2), heap.pool());
-        assertEquals(new Integer(4), heap.pool());
-        assertEquals(new Integer(6), heap.pool());
-        assertEquals(new Integer(8), heap.pool());
         assertEquals(new Integer(10), heap.pool());
+        assertEquals(new Integer(8), heap.pool());
+        assertEquals(new Integer(6), heap.pool());
+        assertEquals(new Integer(4), heap.pool());
+        assertEquals(new Integer(2), heap.pool());
         assertNull(heap.pool());
 
     }
@@ -66,8 +67,8 @@ public class BinaryHeapTest {
     public void testPool() {
         heap.insert(2);
         heap.insert(10);
-        assertEquals(new Integer(2), heap.pool());
-        assertEquals(new Integer(10),heap.pool());
+        assertEquals(new Integer(10), heap.pool());
+        assertEquals(new Integer(2),heap.pool());
         assertNull(heap.peek());
     }
 
@@ -119,14 +120,14 @@ public class BinaryHeapTest {
         @Override
         public int compareTo(Item o) {
             if(this.price > o.price) {
-                return 1;
-            } else if(this.price < o.price) {
                 return -1;
+            } else if(this.price < o.price) {
+                return 1;
             } else {
                 if( this.yearOfProduction < o.yearOfProduction) {
-                    return 1;
-                } else if (this.yearOfProduction > o.yearOfProduction) {
                     return -1;
+                } else if (this.yearOfProduction > o.yearOfProduction) {
+                    return 1;
                 }
             }
             return 0;
