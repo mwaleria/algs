@@ -1,7 +1,7 @@
 package pl.mwaleria.algs.ds;
 
 import java.util.Arrays;
-import java.util.Comparator;
+
 
 /**
  * Created by Marcin on 11.04.2015.
