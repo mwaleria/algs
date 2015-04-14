@@ -17,15 +17,25 @@ public class BubbleSort {
             for(int j=0 ; j<i ; j++) {
                 if(elements.get(j).compareTo(elements.get(j+1))> 0) {
                     swapped = true;
-                    T tmp = elements.get(j+1);
-                    elements.set(j+1,elements.get(j));
-                    elements.set(j,tmp);
+                    SortUtils.swapInList(elements, j, j + 1);
                 }
             }
         }
     }
 
     public static <T extends Comparable<T>> void sort(T[] array) {
-        // not implemented yet.
+        if(array == null) {
+            throw new IllegalArgumentException("Array to sort cannot be null.");
+        }
+        boolean swapped = true;
+
+        for(int i = array.length -1 ; i > 0 && swapped ; i--){
+            for(int j=0 ; j<i ; j++) {
+                if(array[j].compareTo(array[j+1])> 0) {
+                    swapped = true;
+                    SortUtils.swapInArray(array, j, j + 1);
+                }
+            }
+        }
     }
 }

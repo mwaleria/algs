@@ -46,12 +46,12 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
         if(size==0) {
             return null;
         }
-        T min =(T) values[1];
+        T max =(T) values[1];
         values[1] = values[size];
         size --;
         downheap(1);
 
-        return min;
+        return max;
     }
 
     @Override
