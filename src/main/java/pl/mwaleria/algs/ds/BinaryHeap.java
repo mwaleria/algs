@@ -41,7 +41,6 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
 
     }
 
-    @Override
     public T pool() {
         if(size==0) {
             return null;
@@ -54,7 +53,6 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
         return max;
     }
 
-    @Override
     public T peek() {
         if(size > 0)
             return (T) values[1];
@@ -62,12 +60,10 @@ public class BinaryHeap<T extends Comparable<T>> implements Heap<T> {
         return null;
     }
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public boolean isEmpty() {
         return size == 0 ;
     }
