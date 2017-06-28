@@ -12,13 +12,14 @@ public class BubbleSort {
             throw new IllegalArgumentException("List to sort cannot be null.");
         }
         boolean swapped = true;
-
+        System.out.println("init = " + elements);
         for(int i = elements.size() -1 ; i > 0 && swapped ; i--){
             swapped = false;
             for(int j=0 ; j<i ; j++) {
                 if(elements.get(j).compareTo(elements.get(j+1))> 0) {
                     swapped = true;
                     SortUtils.swapInList(elements, j, j + 1);
+                    System.out.println("i="+i+" , j="+j+ " Kolekcja=" + elements);
                 }
             }
         }
