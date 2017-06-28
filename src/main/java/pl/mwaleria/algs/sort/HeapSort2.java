@@ -26,7 +26,6 @@ public class HeapSort2 {
         int leftIndex = 2*index;
         int rightIndex = 2*index+1;
         int largest = index;
-
         if(leftIndex <= maxIndex && elements.get(leftIndex).compareTo(elements.get(largest)) > 0) {
             largest = leftIndex;
         }
@@ -37,7 +36,6 @@ public class HeapSort2 {
             SortUtils.swapInList(elements,index,largest);
             heapify(elements,largest,maxIndex);
         }
-
     }
 
 
