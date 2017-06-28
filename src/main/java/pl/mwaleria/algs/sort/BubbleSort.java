@@ -14,6 +14,7 @@ public class BubbleSort {
         boolean swapped = true;
 
         for(int i = elements.size() -1 ; i > 0 && swapped ; i--){
+            swapped = false;
             for(int j=0 ; j<i ; j++) {
                 if(elements.get(j).compareTo(elements.get(j+1))> 0) {
                     swapped = true;
@@ -30,6 +31,7 @@ public class BubbleSort {
         boolean swapped = true;
 
         for(int i = array.length -1 ; i > 0 && swapped ; i--){
+            swapped = false;
             for(int j=0 ; j<i ; j++) {
                 if(array[j].compareTo(array[j+1])> 0) {
                     swapped = true;

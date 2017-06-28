@@ -18,7 +18,6 @@ public class QuickSort1 {
             int middleIndex = getMiddle(leftIndex,rightIndex);
             T middleElement = elements.get(middleIndex);
             SortUtils.swapInList(elements,middleIndex,rightIndex);
-            T tmp = null;
             int actual = leftIndex;
             for(int i = leftIndex ; i < rightIndex ; i ++) {
                 if(elements.get(i).compareTo(middleElement) < 0) {
